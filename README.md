@@ -38,6 +38,7 @@ AI_TRAVEL_GUIDE NXT/
 - pip
 - A valid Google Gemini API key
 - A valid Murf AI API key
+- A strong Flask secret key for session security
 
 ## Setup
 
@@ -55,22 +56,31 @@ source venv/bin/activate
 3. Install dependencies:
 
 ```bash
-pip install flask flask-cors google-genai requests
+pip install flask flask-cors google-genai requests python-dotenv
 ```
 
-4. Set environment variables:
+4. Copy the sample environment file and update the values:
 
 ```bash
-set GEMINI_API_KEY=your_gemini_api_key
-set MURF_API_KEY=your_murf_api_key
+copy .env.example .env
 ```
 
 On macOS/Linux use:
 
 ```bash
-export GEMINI_API_KEY=your_gemini_api_key
-export MURF_API_KEY=your_murf_api_key
+cp .env.example .env
 ```
+
+Then edit `.env` and fill in your actual values:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+MURF_API_KEY=your_murf_api_key_here
+SECRET_KEY=your_strong_secret_key_here
+FLASK_DEBUG=False
+```
+
+Do not commit your real `.env` file. It is already ignored by Git.
 
 ## Run the App
 

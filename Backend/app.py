@@ -1,17 +1,22 @@
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from google import genai
+from dotenv import load_dotenv
 import requests
 import tempfile
 import base64
 import os
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
+
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "change-this-secret-key")
 CORS(app)
 MURF_API_KEY = os.getenv("MURF_API_KEY") or ""
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or ""
-FRONTEND_DIR = Path(__file__).resolve().parent.parent / "Frontend"
+FRONTEND_DIR = BASE_DIR / "Frontend"
 
 client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
