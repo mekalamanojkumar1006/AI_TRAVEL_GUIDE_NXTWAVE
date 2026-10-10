@@ -5,11 +5,13 @@ A travel companion web app that lets users explore destinations, choose a travel
 ## Features
 
 - Destination cards with travel preview
-- Search and explore destination selection
+- Search for tourist places and explore matching destination cards
 - Audio guide generation with summary or detailed narration
 - Multiple language options
-- Male/female voice selection
+- Male/female narrator selection with adjustable narration pace
 - AI-generated travel description and audio playback
+- Expandable text transcript
+- AI-generated multi-day itineraries tailored to traveler interests
 
 ## Tech Stack
 
@@ -100,7 +102,8 @@ http://127.0.0.1:5000/
 ## Notes
 
 - The app serves the frontend from the Flask backend at the root URL.
-- The audio generation endpoint is `POST /generate-audio-guide`.
+- The app exposes `POST /api/search-places`, `POST /api/generate-itinerary`, and `POST /api/generate-audio-guide` endpoints. Non-prefixed aliases are also available for local Flask use.
+- Place discovery uses Wikipedia summaries and thumbnails. Historical guides, itineraries, and speech require the configured Gemini and Murf API keys.
 - If API keys are missing, the server will return a clear error instead of crashing.
 
 ## License

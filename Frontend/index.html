@@ -53,6 +53,10 @@
       animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
 
+    .cards-grid.searching > .place-card:not([data-search-result]) {
+      display: none;
+    }
+
     @keyframes slideUp {
       from {
         opacity: 0;
@@ -98,14 +102,14 @@
             alt="logo" class="w-6 h-6 object-contain">
         </div>
         <div>
-          <div class="font-bold text-lg tracking-tight text-gray-900 leading-none">Travel Guide</div>
-          <div class="hidden sm:block text-[11px] text-gray-500 font-medium tracking-wide mt-1">AI Travel Companion
+          <div class="font-bold text-lg tracking-tight text-gray-900 leading-none" data-i18n="travelGuide">Travel Guide</div>
+          <div class="hidden sm:block text-[11px] text-gray-500 font-medium tracking-wide mt-1" data-i18n="travelCompanion">AI Travel Companion
           </div>
         </div>
       </div>
       <div class="flex items-center gap-2 flex-1 justify-end max-w-lg ml-6">
         <div class="relative w-full max-w-[320px] group">
-          <input id="searchInput" placeholder="Search destination..."
+          <input id="searchInput" placeholder="Search tourist places..." data-i18n-placeholder="searchPlaceholder"
             class="w-full pl-5 pr-12 py-2.5 rounded-full border border-gray-200 bg-gray-50/50 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#ff8a1f] focus:ring-4 focus:ring-orange-50 transition-all duration-300 placeholder-gray-400 group-hover:bg-white group-hover:shadow-sm">
           <div class="absolute right-4 top-2.5 text-gray-400 pointer-events-none"><svg class="w-5 h-5" fill="none"
               stroke="currentColor" viewBox="0 0 24 24">
@@ -114,9 +118,9 @@
             </svg></div>
         </div>
         <button id="searchBtn"
-          class="hidden sm:block px-6 py-2.5 rounded-full bg-gray-900 text-white font-semibold text-sm hover:bg-[#ff8a1f] hover:shadow-lg hover:shadow-orange-200 active:scale-95 transition-all duration-300">Explore</button>
+          data-i18n="explore" class="hidden sm:block px-6 py-2.5 rounded-full bg-gray-900 text-white font-semibold text-sm hover:bg-[#ff8a1f] hover:shadow-lg hover:shadow-orange-200 active:scale-95 transition-all duration-300">Explore</button>
         <button id="addPlaceBtn"
-          class="block px-5 py-2.5 rounded-full border border-[#ff8a1f] bg-white text-[#ff8a1f] font-semibold text-sm hover:bg-[#fff4eb] hover:shadow-md hover:shadow-orange-100 active:scale-95 transition-all duration-300">Add Place</button>
+          data-i18n="addPlace" class="block px-5 py-2.5 rounded-full border border-[#ff8a1f] bg-white text-[#ff8a1f] font-semibold text-sm hover:bg-[#fff4eb] hover:shadow-md hover:shadow-orange-100 active:scale-95 transition-all duration-300">Add Place</button>
       </div>
     </div>
   </header>
@@ -125,6 +129,21 @@
     <div class="max-w-7xl mx-auto">
 
       <div id="desktopBackContainer" class="hidden w-full mx-auto mb-6 pl-1"></div>
+
+      <p id="searchStatus" class="hidden mb-5 text-sm font-medium text-gray-600" role="status" aria-live="polite"></p>
+
+      <div class="mb-5 flex justify-end">
+        <label class="flex items-center gap-2 text-xs font-semibold text-gray-500">
+          <span data-i18n="language">Language</span>
+          <select id="appLanguageSelect"
+            class="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-800 focus:outline-none focus:border-[#ff8a1f]">
+            <option value="English" data-i18n="english">English</option>
+            <option value="Hindi" data-i18n="hindi">Hindi</option>
+            <option value="Tamil" data-i18n="tamil">Tamil</option>
+            <option value="Telugu" data-i18n="telugu">Telugu</option>
+          </select>
+        </label>
+      </div>
 
       <div
         class="cards cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full mx-auto min-h-[600px] relative
@@ -143,11 +162,11 @@
               Agra</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">World Wonder</span>
+            <span data-i18n="worldWonder" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">World Wonder</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Taj Mahal</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">An immense mausoleum of white marble, built in
+            <p data-i18n="tajDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">An immense mausoleum of white marble, built in
               Agra between 1631 and 1648.</p>
           </div>
         </div>
@@ -165,11 +184,11 @@
               New Delhi</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Historical Fort</span>
+            <span data-i18n="historicalFort" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Historical Fort</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Red Fort</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">A historic fort in the city of Delhi in India
+            <p data-i18n="redFortDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">A historic fort in the city of Delhi in India
               that served as the main residence of the Mughal Emperors.</p>
           </div>
         </div>
@@ -188,11 +207,11 @@
               Mumbai</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Monument</span>
+            <span data-i18n="monument" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Monument</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Gateway of India</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">An arch-monument built during the 20th century
+            <p data-i18n="gatewayDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">An arch-monument built during the 20th century
               in Bombay, India.</p>
           </div>
         </div>
@@ -212,11 +231,11 @@
               Jaipur</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Architecture</span>
+            <span data-i18n="architecture" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Architecture</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Hawa Mahal</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">The 'Palace of Winds', a palace in Jaipur,
+            <p data-i18n="hawaDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">The 'Palace of Winds', a palace in Jaipur,
               India, made with the red and pink sandstone.</p>
           </div>
         </div>
@@ -235,11 +254,11 @@
               Amritsar</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Spiritual</span>
+            <span data-i18n="spiritual" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Spiritual</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Golden Temple</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">Also known as Sri Harmandir Sahib, it is the
+            <p data-i18n="templeDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">Also known as Sri Harmandir Sahib, it is the
               holiest Gurdwara of Sikhism.</p>
           </div>
         </div>
@@ -257,11 +276,11 @@
               Mysore</div>
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Royal Palace</span>
+            <span data-i18n="royalPalace" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Royal Palace</span>
             <h3
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900 group-hover:text-[#ff8a1f] transition-colors">
               Mysore Palace</h3>
-            <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">A historical palace and a royal residence at
+            <p data-i18n="mysoreDescription" class="text-sm text-gray-500 line-clamp-2 leading-relaxed">A historical palace and a royal residence at
               Mysore in the Indian State of Karnataka.</p>
           </div>
         </div>
@@ -272,7 +291,7 @@
             <img id="searchPreviewImage" src="" alt="Destination preview" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
-            <span class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Search Result</span>
+            <span data-i18n="searchResult" class="text-[11px] text-[#ff8a1f] font-bold uppercase tracking-widest">Search Result</span>
             <h3 id="searchPreviewTitle"
               class="mt-2 mb-1 text-xl font-['Playfair_Display',_serif] font-bold text-gray-900"></h3>
             <p class="text-sm text-gray-500">Destination found via search.</p>
@@ -283,77 +302,90 @@
           <div class="flex justify-start mb-6">
             <button id="closeExperience"
               class="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:text-[#ff8a1f] hover:border-[#ff8a1f]/30 hover:shadow-sm transition-all flex items-center gap-2 group">
-              <span class="group-hover:-translate-x-0.5 transition-transform">←</span> Back to Places
+              <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-i18n="backToPlaces">Back to Places</span>
             </button>
           </div>
 
           <div class="p-8 bg-white border border-gray-100 rounded-[2rem] shadow-2xl shadow-gray-200/50">
             <div class="border-b border-dashed border-gray-200 mb-6 pb-6">
               <span
-                class="text-[10px] font-bold uppercase tracking-widest text-[#ff8a1f] bg-orange-50 px-2 py-1 rounded-md">AI
-                Guide Ready</span>
+                data-i18n="guideReady" class="text-[10px] font-bold uppercase tracking-widest text-[#ff8a1f] bg-orange-50 px-2 py-1 rounded-md">AI Guide Ready</span>
               <h3 id="previewTitle"
                 class="mt-3 text-3xl font-['Playfair_Display',_serif] font-bold text-gray-900 leading-tight"></h3>
             </div>
 
             <div class="mb-6">
-              <h4 class="mb-3 text-xs uppercase tracking-widest text-gray-400 font-bold">Duration & Detail</h4>
+              <h4 data-i18n="durationDetail" class="mb-3 text-xs uppercase tracking-widest text-gray-400 font-bold">Duration &amp; Detail</h4>
               <div class="flex gap-4" data-group="length">
                 <button
                   class="option active flex-1 p-4 rounded-2xl border border-gray-200 bg-gray-50 text-left cursor-pointer hover:border-[#ff8a1f] transition-all relative overflow-hidden group [&.active]:bg-[#fff1e5] [&.active]:border-[#ff8a1f] [&.active]:shadow-lg [&.active]:shadow-orange-100"
                   data-value="Summary">
                   <div class="relative z-10">
-                    <strong class="block text-sm mb-1 text-gray-900">Summarized</strong>
-                    <span class="text-xs text-gray-500 group-hover:text-[#ff8a1f]/80">~1 min overview</span>
+                    <strong data-i18n="summarized" class="block text-sm mb-1 text-gray-900">Summarized</strong>
+                    <span data-i18n="oneMinute" class="text-xs text-gray-500 group-hover:text-[#ff8a1f]/80">~1 min overview</span>
                   </div>
                 </button>
                 <button
                   class="option flex-1 p-4 rounded-2xl border border-gray-200 bg-gray-50 text-left cursor-pointer hover:border-[#ff8a1f] transition-all relative overflow-hidden group [&.active]:bg-[#fff1e5] [&.active]:border-[#ff8a1f] [&.active]:shadow-lg [&.active]:shadow-orange-100"
                   data-value="Detailed">
                   <div class="relative z-10">
-                    <strong class="block text-sm mb-1 text-gray-900">Detailed</strong>
-                    <span class="text-xs text-gray-500 group-hover:text-[#ff8a1f]/80">~3 min guide</span>
+                    <strong data-i18n="detailed" class="block text-sm mb-1 text-gray-900">Detailed</strong>
+                    <span data-i18n="threeMinute" class="text-xs text-gray-500 group-hover:text-[#ff8a1f]/80">~3 min guide</span>
                   </div>
                 </button>
               </div>
             </div>
 
             <div class="mb-8">
-              <h4 class="mb-3 text-xs uppercase tracking-widest text-gray-400 font-bold">Audio Settings</h4>
-              <div class="flex gap-3">
-                <div class="relative flex-1">
+              <h4 data-i18n="audioSettings" class="mb-3 text-xs uppercase tracking-widest text-gray-400 font-bold">Audio Settings</h4>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="block min-w-0">
+                  <span data-i18n="language" class="mb-1.5 block text-[11px] font-semibold text-gray-500">Language</span>
                   <select id="selectLanguage"
-                    class="w-full appearance-none px-5 py-3.5 rounded-xl border border-gray-200 text-sm font-semibold focus:outline-none focus:border-[#ff8a1f] bg-white text-gray-800 shadow-sm">
-                    <option>English</option>
-                    <option>Hindi</option>
-                    <option>Tamil</option>
-                    <option>Telugu</option>
+                    class="w-full appearance-none px-3 py-3 rounded-xl border border-gray-200 text-sm font-semibold focus:outline-none focus:border-[#ff8a1f] bg-white text-gray-800 shadow-sm">
+                    <option value="English" data-i18n="english">English</option>
+                    <option value="Hindi" data-i18n="hindi">Hindi</option>
+                    <option value="Tamil" data-i18n="tamil">Tamil</option>
+                    <option value="Telugu" data-i18n="telugu">Telugu</option>
                   </select>
-                  <div class="absolute right-4 top-4 text-gray-400 pointer-events-none text-xs">▼</div>
-                </div>
-                <div
-                  class="flex border border-gray-200 rounded-xl overflow-hidden bg-gray-50 p-1.5 w-[160px] shadow-inner"
-                  data-group="voice">
+                </label>
+                <label class="block min-w-0">
+                  <span data-i18n="narrator" class="mb-1.5 block text-[11px] font-semibold text-gray-500">Narrator</span>
+                  <select id="voiceSelect"
+                    class="w-full appearance-none px-3 py-3 rounded-xl border border-gray-200 text-sm font-semibold focus:outline-none focus:border-[#ff8a1f] bg-white text-gray-800 shadow-sm"></select>
+                </label>
+                <div class="col-span-2 flex items-center justify-between gap-3">
+                  <span data-i18n="voiceType" class="text-[11px] font-semibold text-gray-500">Voice type</span>
+                  <div class="flex border border-gray-200 rounded-xl overflow-hidden bg-gray-50 p-1 shadow-inner"
+                    data-group="voice">
                   <button
                     class="active flex-1 rounded-lg text-xs font-bold text-gray-500 transition-all [&.active]:bg-white [&.active]:text-[#ff8a1f] [&.active]:shadow-sm"
-                    data-value="Male">Male</button>
+                    data-value="Male" data-i18n="male">Male</button>
                   <button
                     class="flex-1 rounded-lg text-xs font-bold text-gray-500 transition-all [&.active]:bg-white [&.active]:text-[#ff8a1f] [&.active]:shadow-sm"
-                    data-value="Female">Female</button>
+                    data-value="Female" data-i18n="female">Female</button>
+                  </div>
                 </div>
+                <label class="col-span-2 block">
+                  <span class="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-gray-500">
+                    <span data-i18n="narrationPace">Narration pace</span>
+                    <span id="paceValue" class="text-gray-700" data-i18n="normal">Normal</span>
+                  </span>
+                  <input id="speechRate" type="range" min="-20" max="20" value="0" step="5"
+                    class="w-full accent-[#ff8a1f]" aria-label="Narration pace" data-i18n-aria-label="narrationPace">
+                </label>
               </div>
             </div>
 
             <button id="generateBtn"
-              class="w-full py-4 bg-gradient-to-r from-[#ff8a1f] to-[#ff6a00] text-white rounded-xl font-bold text-sm shadow-xl shadow-orange-200 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed">Generate
-              Audio Guide</button>
+              data-i18n="generateAudio" class="w-full py-4 bg-gradient-to-r from-[#ff8a1f] to-[#ff6a00] text-white rounded-xl font-bold text-sm shadow-xl shadow-orange-200 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed">Generate Audio Guide</button>
+            <p id="audioStatus" class="hidden mt-3 text-sm leading-6 text-red-700" role="status" aria-live="polite"></p>
 
             <div id="audioSection" class="hidden mt-8 pt-6 border-t border-gray-100">
               <div class="mb-5 border border-gray-200 rounded-2xl bg-gray-50 p-4">
                 <div class="flex justify-between items-center cursor-pointer select-none group" id="transcriptToggle">
                   <span
-                    class="text-xs font-bold text-gray-500 group-hover:text-[#ff8a1f] transition-colors tracking-wide uppercase">Read
-                    Transcript</span>
+                    data-i18n="readTranscript" class="text-xs font-bold text-gray-500 group-hover:text-[#ff8a1f] transition-colors tracking-wide uppercase">Read Transcript</span>
                   <span class="text-[10px] text-gray-400 transition-transform duration-200"
                     id="transcriptArrow">▼</span>
                 </div>
@@ -365,6 +397,27 @@
               </div>
               <audio id="audioPlayer" controls class="w-full h-11 rounded-lg shadow-sm"></audio>
             </div>
+
+            <section class="mt-8 pt-6 border-t border-gray-100" aria-labelledby="itineraryHeading">
+              <h4 id="itineraryHeading" data-i18n="planTrip" class="mb-3 text-xs uppercase tracking-widest text-gray-400 font-bold">Plan this trip</h4>
+              <div class="grid grid-cols-[120px_1fr] gap-3">
+                <label class="block">
+                  <span data-i18n="days" class="mb-1.5 block text-[11px] font-semibold text-gray-500">Days</span>
+                  <input id="tripDays" type="number" min="1" max="14" value="2"
+                    class="w-full rounded-xl border border-gray-200 px-3 py-3 text-sm font-semibold focus:outline-none focus:border-[#ff8a1f]">
+                </label>
+                <label class="block min-w-0">
+                  <span data-i18n="interests" class="mb-1.5 block text-[11px] font-semibold text-gray-500">Interests</span>
+                  <input id="tripInterests" type="text" maxlength="600" placeholder="History, food, architecture..." data-i18n-placeholder="interestsPlaceholder"
+                    class="w-full rounded-xl border border-gray-200 px-3 py-3 text-sm focus:outline-none focus:border-[#ff8a1f]">
+                </label>
+              </div>
+              <button id="planTripBtn" type="button"
+                class="mt-3 w-full rounded-xl border border-gray-200 bg-white py-3 text-sm font-bold text-gray-700 hover:border-[#ff8a1f] hover:text-[#ff8a1f] transition-colors disabled:opacity-60">
+                <span data-i18n="buildItinerary">Build itinerary</span>
+              </button>
+              <div id="itineraryOutput" class="hidden mt-4 whitespace-pre-line text-sm leading-7 text-gray-600" aria-live="polite"></div>
+            </section>
 
           </div>
         </div>
